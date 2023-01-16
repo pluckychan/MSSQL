@@ -1,0 +1,16 @@
+/* function to split the input string with inputted separator character and return the result in table */ 
+create FUNCTION [dbo].[F_split]
+@splitstr   VARCHAR(2000),	/* string to be split */
+@separator 		VARCHAR(2)		/* separator character */
+returns 
+@t_split TABLE(col INT) AS 
+  BEGIN 
+	WHILE( Charindex(@separator, @splitstr) <> 0 ) 
+	  BEGIN 
+		/* insert the string item output to table @t_split */
+		INSERT @t_split (col) VALUES(	Substring(@splitstr, 1, Charindex(@separator, @splitstr) - 1) /* the first item starting from left of the input string */	) 
+		SET @splitstr=Stuff(@splitstr, 1, Charindex(@separator, @splitstr), '') 
+	  END 
+	INSERT @t_split (col) VALUES(@splitstr) /* the last record */
+    RETURN 
+  END
