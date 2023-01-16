@@ -1,6 +1,5 @@
 /* function to split the input string with inputted separator character and return the result in table */ 
 create FUNCTION [dbo].[F_split]
-
 @splitstr   VARCHAR(2000),	/* string to be split */
 @separator 		VARCHAR(2)		/* separator character */
 returns 
