@@ -1,4 +1,4 @@
-
+/* create table and insert content */
 create table TestResult (
 	StudentName nvarchar(100),
 	Subject nvarchar(100),
@@ -37,7 +37,7 @@ pivot (
 ) as pt
 union all
 select 'Average Score', [Chole], [Xavier], [Joe], [Hayden], [Edwin]
-from (select StudentName, Score from TestResult) p
+from (select StudentName, Score from TestResult /* average Score by student */ ) p
 pivot (
 	avg(Score)
 	for StudentName in ([Chole], [Xavier], [Joe], [Hayden], [Edwin])
