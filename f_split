@@ -14,3 +14,4 @@ returns
 	INSERT @t_split (col) VALUES(@splitstr) /* the last record */
     RETURN 
   END
+ 
